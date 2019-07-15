@@ -1,0 +1,23 @@
+Course # 2 Week 2: Image Augmentation
+It helps Overfitting.
+Why?
+It manipulates the training set to generate more scenarios for features in the images
+Raw data is as is, all augmentation is done in-memory
+
+When using Image Augmentation my training gets...
+Slowwr
+
+When we rescale the image, it is form for data augmentation
+rescale
+rotation_range
+width_shift_range
+height_shift_range...
+shear_range //shear along X-axis randomly upto given %
+height_range
+fill_mode: How to fill in lost pixels. nearest
+
+How do you use Image Augmentation in TensorFLow
+Using parameters to the ImageDataGenerator
+
+When training with augmentation, you noticed that the training is a little slower. Why?
+Because the image processing takes cycles
