@@ -28,7 +28,7 @@ model.compile(optimizer = RMSprop(lr=0.0001),
               metrics = ['acc'])
               
               
-              
+Questions:              
 How do you change the number of classes the model can classify when using transfer learning?
 (i.e. the original model handled 1000 classes, but yours handles just 2)
 When you add your DNN at the bottom of the network, you specify your output layer with the number of classes you want
