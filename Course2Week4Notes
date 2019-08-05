@@ -1,0 +1,4 @@
+Multi Class Classification changes from Binary Class:
+(1)image generator(class_mode = categorical/binary). For multiple classes, you'll have to change this to categorical.
+(2) At output layer use SOFTMAX instead of sigmoid act..
+(3) model.compile(loss = 'binary_crossentropy' ---> 'categorical_crossentropy'
