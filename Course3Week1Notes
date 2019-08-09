@@ -1,0 +1,29 @@
+NLP in TF:::
+Step 1: Charc Level Encoding
+We could take character encodings for each character in a set. For example, the ASCII values. 
+But will that help us understand the meaning of a word? --> No
+LISTEN and SILENT
+
+Step 2: What if we could give words a value and have those values used in training a network?
+
+We use Tokenizer:
+Generates the dictionary of word encodings and creating vectors out of the sentences.
+--tokenizer = Tokenizer(num_words=100, oov_token="<OOV>")
+    Take top 100 words by volume from text and encode those.
+-->Tokenizer.fit_on_texts(sentences) ## Encode the data, strips punctuation
+-->word_index = tokenizer.word_index  ## This is dictionary that containing key value pairs, 
+    where the key is the word, and the value is the token for that word
+    {'I':1, "love':2.... }
+-->sequences = tokenizer.texts_to_sequences(sentences)
+    get texts to sequences, and it will turn them into a set of sequences for me. 
+    method used to encode a list of sentences to use those tokens?
+
+Padding:
+padded = pad_sequences(sequences,maxlen = 5, truncating = post) ## Sentenses to have max len of 5. Truncate from end.
+Import pad_sequences from tensorflow.keras.preprocessing.sequence.
+Then once the tokenizer has created the sequences, these sequences can be passed to pad sequences in order to have them padded 
+like this.  
+You can now see that the list of sentences has been padded out into a matrix and that each row in the matrix has the same length
+0 are put before/after in matrix based on 
+-->padding = post . Default 0 are added before
+ 
