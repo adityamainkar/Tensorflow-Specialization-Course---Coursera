@@ -1,0 +1,30 @@
+The process is called embedding: 
+with the idea being that words and associated words are clustered as vectors in a multi-dimensional space. 
+
+ There's a library called TensorFlow Data Services or TFTS for short, 
+ and that contains many data sets and lots of different categories. 
+ 
+ TF 1.X to 2.X :: tf.enable_eager_execution()
+ 
+ 
+ Code for creating training_sentences::: tokenizer.fit_on_texts(training_sentences)
+
+train_data, test_data = imdb['train'], imdb['test']
+
+training_sentences = []
+training_labels = []
+
+testing_sentences = []
+testing_labels = []
+
+# str(s.tonumpy()) is needed in Python3 instead of just s.numpy()
+for s,l in train_data:
+  training_sentences.append(str(s.numpy())) ## REQD to load from tensors.
+  training_labels.append(l.numpy())
+  
+for s,l in test_data:
+  testing_sentences.append(str(s.numpy()))
+  testing_labels.append(l.numpy())
+print(training_sentences[0])  
+training_labels_final = np.array(training_labels) ##for training, I need numpy arrays instead of just straight array
+testing_labels_final = np.array(testing_labels)
