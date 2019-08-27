@@ -1,0 +1,23 @@
+Why Time Series:
+1) Forcast
+2) To project back into the past to see how we got to where we are now. Imputation
+3) to detect anomalies.
+
+Common Patterns:
+1) Trend
+2) Seasonality
+3) Autocorrelation : Data that follows a predictable shape, even if the scale is different
+4) nosie: Unpredictable changes in time series data
+
+After big event, we see non-stationary time series.
+
+The most common metric to evaluate the forecasting performance of a model is the mean squared error or mse.
+Other is MAE.
+This does not penalize large errors as much as the mse does. Depending on your task, you may prefer the mae or the mse. 
+For example, if large errors are potentially dangerous and they cost you much more than smaller errors, then you may prefer the mse. 
+But if your gain or your loss is just proportional to the size of the error, then the mae may be better.
+
+Differencing: Technique to remove the trend and seasonality from the time series 
+(1) Get  this difference time series which has no trend and no seasonality.
+(2) use a moving average to forecast differnce time series 
+(3) add back the value at time T minus 365
