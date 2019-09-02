@@ -1,0 +1,39 @@
+Using RNN:
+Input shape : The inputs are three dimensional. 
+window size * ( 30) timestamps *batch size
+
+Output shape: 
+# of neurons in Memory Cell * Batch size * Time steps
+
+If the memory cell is comprised of three neurons, then the output matrix will be four by three because the batch size coming in
+was four and the number of neurons is three. 
+So the full output of the layer is three dimensional, in this case, 4 by 30 by 3.
+
+
+return_sequences=True : This will output a sequence which is fed to the next layer. 
+Else only last cells output will be o/p; not all time steps.
+
+TensorFlow assumes that the first dimension is the batch size, and that it can have any size at all, 
+so you don't need to define it. 
+input_shape = [None,1]
+
+Lambda Layers: 
+
+Learning Rate: 
+Using Call back.  saves a lot of time in our hyper-parameter tuning.
+Step 1 : 
+lr_schedule = tf.keras.callbacks.LearningRateScheduler(
+    lambda epoch: 1e-8 * 10**(epoch / 20))
+history = model.fit(train_set, epochs=100, callbacks=[lr_schedule])
+
+Step 2: Get plot of loss Vs lr
+plt.semilogx(history.history["lr"], history.history["loss"])
+plt.axis([1e-8, 1e-4, 0, 30])
+
+
+Step 3: Set that as lr:
+
+optimizer = tf.keras.optimizers.SGD(lr=5e-5, momentum=0.9)
+model.compile(loss=tf.keras.losses.Huber(),
+              optimizer=optimizer,
+              metrics=["mae"])
